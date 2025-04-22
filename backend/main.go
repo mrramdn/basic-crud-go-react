@@ -1,20 +1,22 @@
 package main
 
 import (
+	"backend/config"
+	"backend/handlers"
 	"log"
 	"net/http"
 	"os"
 
 	"github.com/go-chi/chi/v5"
 	"github.com/joho/godotenv"
-
-	"backend/config"
-	"backend/handlers"
 )
 
 func main() {
 	// Load env
-	_ = godotenv.Load()
+	err := godotenv.Load()
+	if err != nil {
+		log.Println("No .env file found or error loading .env")
+	}
 
 	// Setup router
 	r := chi.NewRouter()

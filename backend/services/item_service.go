@@ -20,3 +20,16 @@ func (s *ItemService) GetAllItems() ([]models.Item, error) {
 func (s *ItemService) CreateItem(item *models.Item) error {
 	return s.repo.Create(item)
 }
+
+func (s *ItemService) GetItemByID(id uint) (*models.Item, error) {
+	return s.repo.GetByID(id)
+}
+
+func (s *ItemService) UpdateItem(id uint, updated *models.Item) error {
+	return s.repo.Update(id, updated)
+}
+
+func (s *ItemService) DeleteItem(id uint) error {
+	return s.repo.Delete(id)
+}
+
